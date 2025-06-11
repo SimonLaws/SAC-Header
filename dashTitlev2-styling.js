@@ -42,6 +42,10 @@
       <label for="feedbackLink">Feedback Link</label>
       <input type="text" id="feedbackLink" placeholder="Example: https://jira-sd.csiro.au/servicedesk"><br><br>
     </div>
+    <div class="customStyleItem">
+      <label for="helpLink">Help Link</label>
+      <input type="text" id="help-link" placeholder="Link to help documentation."><br><br>
+    </div>
   `;
 
   class dashTitleStylingPanel extends HTMLElement {
@@ -57,7 +61,7 @@
       this._titleText.addEventListener("input", this._submit.bind(this));
       this._subtitleText.addEventListener("input", this._submit.bind(this));
       this._feedbackLink.addEventListener("input", this._submit.bind(this));
-
+      this._helpLink.addEventListener("input", this._submit.bind(this));
     }
 
     _submit(e) {
@@ -65,7 +69,8 @@
       const properties = {
         title: this._titleText.value,
         subtitle: this._subtitleText.value,
-        feedbackLink: this._feedbackLink.Value
+        feedbackLink: this._feedbackLink.value,
+        helpLink: this._helpLink.value
       };
 
       this.dispatchEvent(new CustomEvent("propertiesChanged", {
@@ -83,6 +88,10 @@
 
     set feedbackLink(newFeedbackLink) {
       this._feedbackLink.value = newFeedbackLink;
+    }
+
+    set helpLink(newHelpLink) {
+      this._helpLink.value = newHelpLink;
     }
   }
 
