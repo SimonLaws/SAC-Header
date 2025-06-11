@@ -1,0 +1,84 @@
+{
+  "id": "com.csiro.dashTitleV2",
+  "version": "1.0.0",
+  "name": "Dashboard Title V2",
+  "description": "Dashboard title widget with title, subtitle, and action icons",
+  "newInstancePrefix": "dashTitleV2",
+  "icon": "/CSIRO-logo-icon.png",
+  "vendor": "CSIRO",
+  "supportsExport": true,
+  "eula": "",
+  "license": "",
+  "webcomponents": [
+    {
+      "kind": "main",
+      "tag": "com-csiro-title",
+      "url": "/dashTitlev2.js",
+      "integrity": "",
+      "ignoreIntegrity": true
+    },
+    {
+      "kind": "styling",
+      "tag": "com-csiro-title-styling",
+      "url": "/dashTitlev2-styling.js",
+      "integrity": "",
+      "ignoreIntegrity": true
+    }
+
+  ],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Main dashboard title",
+      "default": "Dashboard Title"
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "Subtitle text displayed below the title",
+      "default": "Report Subtitle"
+    },
+    "width": {
+      "type": "integer",
+      "default": 1280
+    },
+    "height": {
+      "type": "integer",
+      "default": 112
+    },
+    "helpLink": {
+      "type": "string",
+      "description": "The link used by the Help button"
+    },
+    "feedbackLink" : {
+      "type": "string",
+      "description": "The link for providing feedback about the story."
+    }
+  },
+  "methods": {
+    "setTitle": {
+      "parameters": [{ "name": "dashTitle", "type": "string" }],
+      "body": "this.title = dashTitle;"
+    },
+    "getTitle": {
+      "returnType": "string",
+      "body": "return this.title;"
+    },
+    "setSubtitle": {
+      "parameters": [{ "name": "dashSubtitle", "type": "string" }],
+      "body": "this.subtitle = dashSubtitle;"
+    },
+    "getSubtitle": {
+      "returnType": "string",
+      "body": "return this.subtitle;"
+    },
+    "setHelpUrl": {
+      "parameters": [{ "name": "helpLink", "type": "string" }],
+      "body": "this.helpLink = helpLink;"
+    },
+    "getHelpUrl": {
+      "returnType": "string",
+      "body": "return this.helpLink;"
+    }
+  },
+  "events": {}
+}

@@ -1,0 +1,81 @@
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    .headerContainer {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        background-color: #FFFFFF;
+        padding: 0 16px;
+    }
+    .headerTitles {
+        flex: 1 0 auto;
+    }
+    .headerIcons {
+        display: flex;
+        gap: 16px;
+    }
+    .dashTitle {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+      font-size: 2rem;
+      color: #00313c;
+    }
+
+    .dashSubTitle {
+      font-family: "Montserrat", sans-serif;
+      font-weight: 400;
+      font-size: 0.9375rem;
+      color: #707070;
+    }
+
+    .headerHelpBtn,
+    .headerFeedbackBtn {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0;
+    border-bottom: 2px solid transparent
+    }
+
+    .helpText,
+    .feedbackText {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #215A72;
+    font-family: "Montserrat", sans-serif;
+    }
+
+    .headerHelpBtn:hover,
+    .headerFeedbackBtn:hover {
+        border-bottom: 2px solid #215A72;
+        cursor: pointer;
+    }
+
+</style>
+
+<div class="headerContainer">
+    <div class="headerTitles">
+        <div class="dashTitle">Title</div>
+        <div class="dashSubTitle">Subtitle</div>
+    </div>
+    <div class="headerIcons">
+
+            <div class="headerHelpBtn" id="help-button" type="button">
+                <div class="helpIcon">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTE2LjAwMDEgMi42NjY2OUM4LjYzMDc2IDIuNjY2NjkgMi42NjY3NSA4LjYzMDAyIDIuNjY2NzUgMTZDMi42NjY3NSAyMy4zNjkyIDguNjMwMDggMjkuMzMzNCAxNi4wMDAxIDI5LjMzMzRDMjMuMzY5NCAyOS4zMzM0IDI5LjMzMzQgMjMuMzcgMjkuMzMzNCAxNkMyOS4zMzM0IDguNjMwNyAyMy4zNzAxIDIuNjY2NjkgMTYuMDAwMSAyLjY2NjY5Wk0xNi4wMDAxIDI3LjQ3MjlDOS42NzM5NCAyNy40NzI5IDQuNTI3MjIgMjIuMzI2MiA0LjUyNzIyIDE2QzQuNTI3MjIgOS42NzM4MiA5LjY3Mzk0IDQuNTI3MTYgMTYuMDAwMSA0LjUyNzE2QzIyLjMyNjMgNC41MjcxNiAyNy40NzI5IDkuNjczODIgMjcuNDcyOSAxNkMyNy40NzI5IDIyLjMyNjIgMjIuMzI2MyAyNy40NzI5IDE2LjAwMDEgMjcuNDcyOVoiIGZpbGw9IiMyMzc5OUUiLz4KPGNpcmNsZSBjeD0iMTYiIGN5PSIxNiIgcj0iMTIiIGZpbGw9IiMyMzc5OUUiLz4KPHBhdGggZD0iTTE1LjU5MDQgMjAuNzA5QzE0Ljc3MDggMjAuNzA5IDE0LjEwNzQgMjEuMzkxOSAxNC4xMDc0IDIyLjIxMTRDMTQuMTA3NCAyMy4wMTE0IDE0Ljc1MTMgMjMuNzEzOSAxNS41OTA0IDIzLjcxMzlDMTYuNDI5NCAyMy43MTM5IDE3LjA5MjggMjMuMDExNCAxNy4wOTI4IDIyLjIxMTRDMTcuMDkyOCAyMS4zOTE5IDE2LjQwOTggMjAuNzA5IDE1LjU5MDQgMjAuNzA5WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE1Ljg0MzkgOS4zMzMzN0MxMy4yMDk3IDkuMzMzMzcgMTIgMTAuODk0NCAxMiAxMS45NDgxQzEyIDEyLjcwOSAxMi42NDM5IDEzLjA2MDMgMTMuMTcwNyAxMy4wNjAzQzE0LjIyNDQgMTMuMDYwMyAxMy43OTUyIDExLjU1NzggMTUuNzg1NCAxMS41NTc4QzE2Ljc2MSAxMS41NTc4IDE3LjU0MTUgMTEuOTg3MSAxNy41NDE1IDEyLjg4NDdDMTcuNTQxNSAxMy45MzgzIDE2LjQ0ODggMTQuNTQzMiAxNS44MDQ5IDE1LjA4OTVDMTUuMjM5IDE1LjU3NzIgMTQuNDk3NiAxNi4zNzczIDE0LjQ5NzYgMTguMDU1NEMxNC40OTc2IDE5LjA3IDE0Ljc3MDggMTkuMzYyNyAxNS41NzA4IDE5LjM2MjdDMTYuNTI2OCAxOS4zNjI3IDE2LjcyMiAxOC45MzM1IDE2LjcyMiAxOC41NjI2QzE2LjcyMiAxNy41NDggMTYuNzQxNSAxNi45NjI3IDE3LjgxNDcgMTYuMTIzNkMxOC4zNDE1IDE1LjcxMzkgMjAgMTQuMzg3IDIwIDEyLjU1MjlDMjAgMTAuNzE4NyAxOC4zNDE1IDkuMzMzMzcgMTUuODQzOSA5LjMzMzM3WiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+Cg=="/>
+                </div>
+                <div class="helpText">Help</div>
+            </div> 
+       
+
+            <div class="headerFeedbackBtn" id="feedback-button" type="button">
+                <div class="feedbackIcon">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTUgNy44NzU1NEM1IDUuMjM0NTMgNi45MzYwMyA0Ljg3Nzg0IDcuOTA0MDQgNS4wMjk2M0gyNS41NjA3QzI3LjA0NzYgNS4wMjk2MyAyNy44MDY0IDYuNjIzMyAyOCA3LjQyMDE0VjE5LjM3M0MyOCAyMS45MjI5IDI2LjA2NCAyMi4zMzI3IDI1LjA5NiAyMi4yMTg5SDkuODc4NzlMNSAyN1Y3Ljg3NTU0WiIgZmlsbD0iIzIzNzk5RSIgc3Ryb2tlPSIjMjM3OTlFIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNMTEgMTFIMjIiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CjxwYXRoIGQ9Ik0xMSAxNUgxOCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPC9zdmc+Cg==" alt="Feedback Icon" />
+                </div>
+                <div class="feedbackText">Feedback</div>
+            <div>
+
+    </div>
+</div>
