@@ -65,7 +65,7 @@
       const properties = {
         title: this._titleText.value,
         subtitle: this._subtitleText.value,
-        feedback: this._feedbackLink.Value
+        feedbackLink: this._feedbackLink.Value
       };
 
       this.dispatchEvent(new CustomEvent("propertiesChanged", {

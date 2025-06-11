@@ -140,7 +140,7 @@
         this._updateHelpLink(changedProperties.helpLink);
       }
       if ("feedbackLink" in changedProperties) {
-        this._updatefeedbackLink(changedProperties._feedbackLink)
+        this._updatefeedbackLink(changedProperties.feedbackLink)
       }
     }
 
@@ -155,7 +155,7 @@
         this._updateHelpLink(changedProperties.helpLink);
       }
       if ("feedbackLink" in changedProperties) {
-        this._updatefeedbackLink(changedProperties._feedbackLink)
+        this._updatefeedbackLink(changedProperties.feedbackLink)
       }
     }
 
