@@ -4,7 +4,7 @@
   "name": "Dashboard Title V2",
   "description": "Dashboard title widget with title, subtitle, and action icons",
   "newInstancePrefix": "dashTitleV2",
-  "icon": "/CSIRO-logo-icon.png",
+  "icon": "https://simonlaws.github.io/SAC-Header/CSIRO-logo-icon.png",
   "vendor": "CSIRO",
   "supportsExport": true,
   "eula": "",
@@ -13,14 +13,14 @@
     {
       "kind": "main",
       "tag": "com-csiro-title",
-      "url": "/dashTitlev2.js",
+      "url": "https://simonlaws.github.io/SAC-Header/dashTitlev2.js",
       "integrity": "",
       "ignoreIntegrity": true
     },
     {
       "kind": "styling",
       "tag": "com-csiro-title-styling",
-      "url": "/dashTitlev2-styling.js",
+      "url": "https://simonlaws.github.io/SAC-Header/dashTitlev2-styling.js",
       "integrity": "",
       "ignoreIntegrity": true
     }
