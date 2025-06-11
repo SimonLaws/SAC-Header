@@ -32,15 +32,15 @@
     </style>
     <div class="customStyleItem">
       <label for="dashTitle">Title Text</label>
-      <input type="text" id="dashTitle" placeholder="Dashboard Title"><br><br>
+      <input type="text" id="dash-title" placeholder="Dashboard Title"><br><br>
     </div>
     <div class="customStyleItem">
       <label for="dashSubtitle">Subtitle Text</label>
-      <input type="text" id="dashSubtitle" placeholder="Dashboard Subtitle"><br><br>
+      <input type="text" id="dash-subtitle" placeholder="Dashboard Subtitle"><br><br>
     </div>
     <div class="customStyleItem">
       <label for="feedbackLink">Feedback Link</label>
-      <input type="text" id="feedbackLink" placeholder="Example: https://jira-sd.csiro.au/servicedesk"><br><br>
+      <input type="text" id="feedback-link" placeholder="Example: https://jira-sd.csiro.au/servicedesk"><br><br>
     </div>
     <div class="customStyleItem">
       <label for="helpLink">Help Link</label>
@@ -54,9 +54,10 @@
       this._shadowRoot = this.attachShadow({ mode: "open" });
       this._shadowRoot.appendChild(template.content.cloneNode(true));
 
-      this._titleText = this._shadowRoot.getElementById("dashTitle");
-      this._subtitleText = this._shadowRoot.getElementById("dashSubtitle");
-      this._feedbackLink = this._shadowRoot.getElementById("feedbackLink");
+      this._titleText = this._shadowRoot.getElementById("dash-title");
+      this._subtitleText = this._shadowRoot.getElementById("dash-subtitle");
+      this._feedbackLink = this._shadowRoot.getElementById("feedback-link");
+      this._helpLink = this._shadowRoot.getElementById("help-link");
 
       this._titleText.addEventListener("input", this._submit.bind(this));
       this._subtitleText.addEventListener("input", this._submit.bind(this));
