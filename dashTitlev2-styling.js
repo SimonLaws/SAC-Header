@@ -39,16 +39,16 @@
       <input type="text" id="dash-subtitle" placeholder="Dashboard Subtitle"><br><br>
     </div>
     <div class="customStyleItem">
+      <label for="helpLink">Help Link</label>
+      <input type="text" id="help-link" placeholder="Link to help documentation."><br><br>
+    </div>
+    <div class="customStyleItem">
       <label for="feedbackLink">Feedback Link</label>
       <input type="text" id="feedback-link" placeholder="Example: https://jira-sd.csiro.au/servicedesk"><br><br>
     </div>
     <div class="customStyleItem">
-      <label for="helpLink">Help Link</label>
-      <input type="text" id="help-link" placeholder="Link to help documentation."><br><br>
-    </div>
-    div class="customStyleItem">
       <label for="collectorID">Jira Issue Collector ID</label>
-      <input type="text" id="collector-ID" placeholder="The collector ID granted by Jira SD - https://confluence.atlassian.com/adminjiraserver0912/advanced-use-of-the-jira-issue-collector-1346047523.html"><br><br>
+      <input type="text" id="collector-ID" placeholder="The collector ID granted by Jira SD"><br><br>
     </div>
   `;
 
