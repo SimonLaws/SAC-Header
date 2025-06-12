@@ -33,7 +33,7 @@
     },
     "subtitle": {
       "type": "string",
-      "description": "Subtitle text displayed below the title",
+      "description": "Subtitle text displayed below the title.",
       "default": "Report Subtitle"
     },
     "width": {
@@ -46,12 +46,17 @@
     },
     "helpLink": {
       "type": "string",
-      "description": "The link used by the Help button"
+      "description": "The link used by the Help button."
     },
     "feedbackLink" : {
       "type": "string",
       "description": "The link for providing feedback about the story."
+    },
+    "collectorID": {
+      "type": "string",
+      "Description": "The jira issue collector ID provided by Jira SD."
     }
+
   },
   "methods": {
     "setTitle": {

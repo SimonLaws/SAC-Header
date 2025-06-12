@@ -104,6 +104,7 @@
       this._helpLink = null; // Will be set via update from SAC at runtime
       this._showCollectorDialog = null;
       this._feedbackLink = null; // Will be set via update from SAC
+      this._collectorID = null; // Will be set at run time
       this._shadowRoot.getElementById("help-button").addEventListener("click", () => {
         if (this._helpLink) {
           window.open(this._helpLink, "_blank");
@@ -126,8 +127,13 @@
     }
 
     _updatefeedbackLink (value) {
-      this._feedbackLink = value
+      this._feedbackLink = value;
     }
+
+    _updatecollectorID (value) {
+      this._collectorID = value;
+    }
+
 
     onCustomWidgetBeforeUpdate(changedProperties) {
       if ("title" in changedProperties) {
@@ -141,6 +147,9 @@
       }
       if ("feedbackLink" in changedProperties) {
         this._updatefeedbackLink(changedProperties.feedbackLink)
+      }
+      if ("collectorID" in changedProperties) {
+        this._updatecollectorID(changedProperties.collectorID)
       }
     }
 
@@ -156,6 +165,9 @@
       }
       if ("feedbackLink" in changedProperties) {
         this._updatefeedbackLink(changedProperties.feedbackLink)
+      }
+      if ("collectorID" in changedProperties) {
+        this._updatecollectorID(changedProperties.collectorID)
       }
     }
 

@@ -46,6 +46,10 @@
       <label for="helpLink">Help Link</label>
       <input type="text" id="help-link" placeholder="Link to help documentation."><br><br>
     </div>
+    div class="customStyleItem">
+      <label for="collectorID">Jira Issue Collector ID</label>
+      <input type="text" id="collector-ID" placeholder="The collector ID granted by Jira SD - https://confluence.atlassian.com/adminjiraserver0912/advanced-use-of-the-jira-issue-collector-1346047523.html"><br><br>
+    </div>
   `;
 
   class dashTitleStylingPanel extends HTMLElement {
@@ -58,11 +62,13 @@
       this._subtitleText = this._shadowRoot.getElementById("dash-subtitle");
       this._feedbackLink = this._shadowRoot.getElementById("feedback-link");
       this._helpLink = this._shadowRoot.getElementById("help-link");
+      this._collectorID = this._shadowRoot.getElementById("collector-ID")
 
       this._titleText.addEventListener("input", this._submit.bind(this));
       this._subtitleText.addEventListener("input", this._submit.bind(this));
       this._feedbackLink.addEventListener("input", this._submit.bind(this));
       this._helpLink.addEventListener("input", this._submit.bind(this));
+      this._collectorID.addEventListener("input", this._submit.bind(this));
     }
 
     _submit(e) {
@@ -71,7 +77,8 @@
         title: this._titleText.value,
         subtitle: this._subtitleText.value,
         feedbackLink: this._feedbackLink.value,
-        helpLink: this._helpLink.value
+        helpLink: this._helpLink.value,
+        collectorID: this._collectorID.value
       };
 
       this.dispatchEvent(new CustomEvent("propertiesChanged", {
@@ -93,6 +100,10 @@
 
     set helpLink(newHelpLink) {
       this._helpLink.value = newHelpLink;
+    }
+
+    set collectorID(newCollectorID) {
+      this._collectorID = newCollectorID;
     }
   }
 
