@@ -23,12 +23,12 @@
 
       :host .headerTitles {
         flex: 1 0 auto;
-        row-gap: 4px;
+        column-gap: 4px;
       }
 
       :host .headerIcons {
         display: flex;
-        column-gap: 4px;
+        row-gap: 24px;
       }
 
       :host .dashTitle {
@@ -55,7 +55,7 @@
         flex-direction: column;
         cursor: pointer;
         padding: 0;
-        row-gap: 24px;
+        column-gap: 4px;
         border-bottom: 2px solid transparent; 
       }
 
