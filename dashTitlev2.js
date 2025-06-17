@@ -149,10 +149,10 @@
         this._updateHelpLink(changedProperties.helpLink);
       }
       if ("feedbackLink" in changedProperties) {
-        this._updatefeedbackLink(changedProperties.feedbackLink)
+        this._updatefeedbackLink(changedProperties.feedbackLink);
       }
       if ("collectorID" in changedProperties) {
-        this._updatecollectorID(changedProperties.collectorID)
+        this._updatecollectorID(changedProperties.collectorID);
       }
     }
 
@@ -167,10 +167,10 @@
         this._updateHelpLink(changedProperties.helpLink);
       }
       if ("feedbackLink" in changedProperties) {
-        this._updatefeedbackLink(changedProperties.feedbackLink)
+        this._updatefeedbackLink(changedProperties.feedbackLink);
       }
       if ("collectorID" in changedProperties) {
-        this._updatecollectorID(changedProperties.collectorID)
+        this._updatecollectorID(changedProperties.collectorID);
       }
     }
 
