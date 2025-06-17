@@ -138,7 +138,7 @@
 
       // Load Jira collector script when collectorID is set
       if (value) {
-        const collectorUrl = `https://jira-sd.csiro.au/plugins/servlet/issueCollectorBootstrap.js?collectorId=${value}&locale=en_AU`;
+        const collectorUrl = `https://jira-sd.csiro.au/plugins/servlet/issueCollectorBootstrap.js?collectorId=${this._collectorID}&locale=en_AU`;
     
       if (!document.querySelector(`script[src="${collectorUrl}"]`)) {
         const script = document.createElement("script");
