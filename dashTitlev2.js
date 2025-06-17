@@ -17,7 +17,7 @@
         display: flex;
         background-color: #FFFFFF;
         align-items: center;
-        height: 100%;
+        height: 99px;
         padding: 0 16px;
       }
 
@@ -30,21 +30,21 @@
         gap: 16px;
       }
 
-      :host .dashTitle,
-      :host .dashSubTitle {
+      :host .dashTitle {
         font-family: "Montserrat", sans-serif;
         font-weight: 400;
         margin: 0;
-      }
-
-      :host .dashTitle {
         font-size: 2rem;
         color: #00313c;
+        line-height: 1.25;
       }
 
       :host .dashSubTitle {
         font-size: 0.9375rem;
         color: #707070;
+        font-family: var(--sapFontFamily);
+        font-weight: 400;
+        line-height: 1.5;
       }
 
       :host .headerHelpBtn,
@@ -62,7 +62,7 @@
         font-size: 0.9375rem;
         font-weight: 600;
         color: #215A72;
-        font-family: var(--sapFontFamily);;
+        font-family: var(--sapFontFamily);
       }
 
       :host .headerHelpBtn:hover,
