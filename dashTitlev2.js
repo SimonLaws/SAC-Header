@@ -63,6 +63,7 @@
         font-weight: 600;
         color: #215A72;
         font-family: var(--sapFontFamily);
+        line-height: 22.5px;
       }
 
       :host .headerHelpBtn:hover,
