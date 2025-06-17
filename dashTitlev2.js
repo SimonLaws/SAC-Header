@@ -56,7 +56,7 @@
         cursor: pointer;
         padding: 0;
         row-gap: 4px
-        border-bottom: 2px solid transparent; 
+        border-bottom: 2px solid black; 
       }
 
       :host .helpText,
