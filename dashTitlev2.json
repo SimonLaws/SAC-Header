@@ -38,7 +38,7 @@
     },
     "width": {
       "type": "integer",
-      "default": 1080
+      "default": 1920
     },
     "height": {
       "type": "integer",
