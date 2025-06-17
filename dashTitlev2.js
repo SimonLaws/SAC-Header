@@ -55,8 +55,8 @@
         flex-direction: column;
         cursor: pointer;
         padding: 0;
-        row-gap: 4px
-        border-bottom: 2px solid black; 
+        row-gap: 4px;
+        border-bottom: 2px solid transparent; 
       }
 
       :host .helpText,
