@@ -62,7 +62,7 @@
         font-size: 0.9375rem;
         font-weight: 600;
         color: #215A72;
-        font-family: "Montserrat", sans-serif;
+        font-family: var(--sapFontFamily);;
       }
 
       :host .headerHelpBtn:hover,
