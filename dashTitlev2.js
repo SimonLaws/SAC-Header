@@ -162,8 +162,6 @@
       }
       }
     
-
-
     onCustomWidgetBeforeUpdate(changedProperties) {
       if ("title" in changedProperties) {
         this._updateDashTitle(changedProperties.title);
