@@ -196,7 +196,7 @@
     
     //The below code is used to create the Jira Issue collector box that pops up when the feedback button is clicked
     connectedCallback() {
-      const collectorUrl = "https://jira-sd.csiro.au/plugins/servlet/issueCollectorBootstrap.js?collectorId=57d7f85e&locale=en_AU";
+      const collectorUrl = feedbackLink;
 
       const button = this.shadowRoot.getElementById("feedback-button");
 
