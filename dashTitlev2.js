@@ -137,17 +137,10 @@
       this._collectorID = value;
 
       // Load Jira collector script when collectorID is set
-      if (value) {
-        const collectorUrl = `https://jira-sd.csiro.au/plugins/servlet/issueCollectorBootstrap.js?collectorId=${value}&locale=en_AU`;
-    
-      if (!document.querySelector(`script[src="${collectorUrl}"]`)) {
-        const script = document.createElement("script");
-        script.src = collectorUrl;
-        script.type = "text/javascript";
-        script.async = true;
-        document.head.appendChild(script);
-      }
+      if (!value) return;
 
+      const collectorUrl = `https://jira-sd.csiro.au/plugins/servlet/issueCollectorBootstrap.js?collectorId=${value}&locale=en_AU`;
+    
       // Define trigger function before script loads
       window.ATL_JQ_PAGE_PROPS = {
         fieldValues: {
@@ -159,8 +152,16 @@
           this._showCollectorDialog = showCollectorDialog;
         }
       };
+
+      if (!document.querySelector(`script[src="${collectorUrl}"]`)) {
+        const script = document.createElement("script");
+        script.src = collectorUrl;
+        script.type = "text/javascript";
+        script.async = true;
+        document.head.appendChild(script);
       }
-    }
+      }
+    
 
 
     onCustomWidgetBeforeUpdate(changedProperties) {
@@ -226,19 +227,25 @@
       button.addEventListener("click", (e) => {
         e.preventDefault();
 
-        if (this._feedbackLink) {
-          window.open(this._feedbackLink, "_blank");
-          return;
-        }
+      if (this._feedbackLink) {
+        console.log("Opening feedback link:", this._feedbackLink);
+        window.open(this._feedbackLink, "_blank");
+      return;
+      }
 
-        if (this._collectorID && this._showCollectorDialog) {
+      if (this._collectorID) {
+        if (this._showCollectorDialog) {
+          console.log("Opening Jira collector dialog");
           this._showCollectorDialog();
-          return;
-        }
+        } else {
+      console.warn("Collector ID is set but showCollectorDialog not ready yet");
+      }
+      return;
+    } 
 
-        console.warn("No feedback link or collector ID set.");
+    console.warn("No feedback link or collector ID set.");
       });
-    }
-  }
-customElements.define("com-csiro-title", dashTitle);
+    };
+  };
+  customElements.define("com-csiro-title", dashTitle);
 })();
