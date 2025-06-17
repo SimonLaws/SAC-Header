@@ -133,8 +133,33 @@
       this._feedbackLink = value;
     }
 
-    _updatecollectorID (value) {
+    _updatecollectorID(value) {
       this._collectorID = value;
+
+      // Load Jira collector script when collectorID is set
+      if (value) {
+        const collectorUrl = `https://jira-sd.csiro.au/plugins/servlet/issueCollectorBootstrap.js?collectorId=${value}&locale=en_AU`;
+    
+      if (!document.querySelector(`script[src="${collectorUrl}"]`)) {
+        const script = document.createElement("script");
+        script.src = collectorUrl;
+        script.type = "text/javascript";
+        script.async = true;
+        document.head.appendChild(script);
+      }
+
+      // Define trigger function before script loads
+      window.ATL_JQ_PAGE_PROPS = {
+        fieldValues: {
+          summary: "Default issue summary",
+          description: "Describe the issue here.\n\nSteps to reproduce:\n1. ...\n2. ...",
+          customfield_10000: "Example value"
+        },
+        triggerFunction: (showCollectorDialog) => {
+          this._showCollectorDialog = showCollectorDialog;
+        }
+      };
+      }
     }
 
 
@@ -196,40 +221,23 @@
     
     //The below code is used to create the Jira Issue collector box that pops up when the feedback button is clicked
     connectedCallback() {
-      const collectorUrl = `"https://jira-sd.csiro.au/plugins/servlet/issueCollectorBootstrap.js?collectorId=${this._feedbackLink}&locale=en_AU"`;
-
       const button = this.shadowRoot.getElementById("feedback-button");
 
-      // 1. Set up the custom trigger function BEFORE script loads
-      window.ATL_JQ_PAGE_PROPS = {
-        fieldValues: {
-          summary: "Default issue summary",
-          description: "Describe the issue here.\n\nSteps to reproduce:\n1. ...\n2. ...",
-          customfield_10000: "Example value"  // Replace with your actual custom field ID
-        },
-        triggerFunction: (showCollectorDialog) => {
-          this._showCollectorDialog = showCollectorDialog;
-        }
-      };
-
-      // 2. Button click from shadow DOM triggers collector manually
       button.addEventListener("click", (e) => {
         e.preventDefault();
-        if (this._showCollectorDialog) {
-          this._showCollectorDialog();
-        } else {
-          console.warn("Jira collector not ready yet.");
-        }
-      });
 
-      // 3. Inject Jira collector script
-      if (!document.querySelector(`script[src="${collectorUrl}"]`)) {
-        const script = document.createElement("script");
-        script.src = collectorUrl;
-        script.type = "text/javascript";
-        script.async = true;
-        document.head.appendChild(script);
-      }
+        if (this._feedbackLink) {
+          window.open(this._feedbackLink, "_blank");
+          return;
+        }
+
+        if (this._collectorID && this._showCollectorDialog) {
+          this._showCollectorDialog();
+          return;
+        }
+
+        console.warn("No feedback link or collector ID set.");
+      });
     }
   }
 customElements.define("com-csiro-title", dashTitle);
