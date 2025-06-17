@@ -36,14 +36,6 @@
       "description": "Subtitle text displayed below the title.",
       "default": "Report Subtitle"
     },
-    "width": {
-      "type": "integer",
-      "default": 1280
-    },
-    "height": {
-      "type": "integer",
-      "default": 112
-    },
     "helpLink": {
       "type": "string",
       "description": "The link used by the Help button."
