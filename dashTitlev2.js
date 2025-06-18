@@ -102,7 +102,7 @@
       super();
       this._shadowRoot = this.attachShadow({ mode: "open" });
       this._shadowRoot.appendChild(template.content.cloneNode(true));
-      this._titleContainer = this._shadowRoot.getElementById("dash-title");
+      this._titleContainer = null;
       this._subtitleContainer = this._shadowRoot.getElementById("dash-subtitle");
       this._helpLink = null; // Will be set via update from SAC at runtime
       this._showCollectorDialog = null;
