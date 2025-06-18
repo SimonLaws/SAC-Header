@@ -103,7 +103,7 @@
     }
 
     set collectorID(newCollectorID) {
-      this._collectorID = newCollectorID;
+      this._collectorID.value = newCollectorID;
     }
   }
 
