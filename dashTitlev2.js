@@ -115,6 +115,9 @@
           console.warn("Help link not defined.");
         }
       });
+      // Accessing user data
+      const userData = window.FPA_SESSION.userParams
+      debugger;
     }
 
     _updateDashTitle(value) {
@@ -246,12 +249,7 @@
     console.warn("No feedback link or collector ID set.");
       });
 
-    // Accessing user data
-    const userData = window.FPA_SESSION && window.FPA_SESSION.userParams
-    ? window.FPA_SESSION.userParams
-    : null;
-
-    debugger;
+    
     };
   };
   customElements.define("com-csiro-title", dashTitle);
