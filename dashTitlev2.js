@@ -116,7 +116,7 @@
         }
       });
       // Accessing user data
-      const userData = window.FPA_SESSION.userParams
+      const userData = window.FPA_SESSION.userParams.DISPLAY_NAME;
       debugger;
     }
 
