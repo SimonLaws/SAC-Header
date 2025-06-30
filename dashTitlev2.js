@@ -218,7 +218,7 @@
       });
     };
     
-    //The below code is used to create the Jira Issue collector box that pops up when the feedback button is clicked
+    // The below code is used to create the Jira Issue collector box that pops up when the feedback button is clicked
     connectedCallback() {
       const button = this.shadowRoot.getElementById("feedback-button");
 
@@ -239,10 +239,19 @@
       console.warn("Collector ID is set but showCollectorDialog not ready yet");
       }
       return;
+
+      
     } 
 
     console.warn("No feedback link or collector ID set.");
       });
+
+    // Accessing user data
+    const userData = window.FPA_SESSION && window.FPA_SESSION.userParams
+    ? window.FPA_SESSION.userParams
+    : null;
+
+    debugger;
     };
   };
   customElements.define("com-csiro-title", dashTitle);
