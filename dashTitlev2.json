@@ -28,11 +28,13 @@
   "properties": {
     "title": {
       "type": "string",
-      "description": "Main dashboard title"
+      "description": "Main dashboard title",
+      "default" : "Dashboard Title"
     },
     "subtitle": {
       "type": "string",
-      "description": "Subtitle text displayed below the title."
+      "description": "Subtitle text displayed below the title.",
+      "default": "Dashboard Subtitle"
     },
     "width": {
       "type": "integer",
