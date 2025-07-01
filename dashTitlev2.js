@@ -115,9 +115,6 @@
           console.warn("Help link not defined.");
         }
       });
-      // Accessing user data
-      const userData = window.FPA_SESSION.userParams.DISPLAY_NAME;
-      debugger;
     }
 
     _updateDashTitle(value) {
