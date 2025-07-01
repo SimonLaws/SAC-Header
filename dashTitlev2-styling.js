@@ -87,11 +87,11 @@
     }
 
     set title(newTitle) {
-      this._titleText.value = newTitle || "Dashboard Title";
+      this._titleText.value = newTitle;
     }
 
     set subtitle(newSubtitle) {
-      this._subtitleText.value = newSubtitle || "Dashboard Subtitle";
+      this._subtitleText.value = newSubtitle;
     }
 
     set feedbackLink(newFeedbackLink) {

@@ -118,11 +118,11 @@
     }
 
     _updateDashTitle(value) {
-      this._titleContainer.textContent = value;
+      this._titleContainer.textContent = value || "Dashboard Title";
     }
 
     _updateDashSubtitle(value) {
-      this._subtitleContainer.textContent = value;
+      this._subtitleContainer.textContent = value || "Dashboard Subtitle"; // fallback
     }
     
     _updateHelpLink(value) {
