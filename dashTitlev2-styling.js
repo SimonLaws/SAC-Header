@@ -91,19 +91,19 @@
     }
 
     set subtitle(newSubtitle) {
-      this._subtitleText.value = newSubtitle;
+      this._subtitleText.value = newSubtitle || "";
     }
 
     set feedbackLink(newFeedbackLink) {
-      this._feedbackLink.value = newFeedbackLink;
+      this._feedbackLink.value = newFeedbackLink || "";
     }
 
     set helpLink(newHelpLink) {
-      this._helpLink.value = newHelpLink;
+      this._helpLink.value = newHelpLink || "";
     }
 
     set collectorID(newCollectorID) {
-      this._collectorID.value = newCollectorID;
+      this._collectorID.value = newCollectorID || "";
     }
   }
 
