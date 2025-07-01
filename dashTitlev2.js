@@ -17,7 +17,7 @@
         display: flex;
         background-color: #FFFFFF;
         align-items: center;
-        height: 99px;
+        height: 96px;
         padding: 0 16px;
       }
 
@@ -43,7 +43,7 @@
       :host .dashSubTitle {
         font-size: 0.9375rem;
         color: #707070;
-        font-family: var(--sapFontFamily);
+        font-family: var(--sapFontFamily),"Montserrat";
         font-weight: 400;
         line-height: 1.5;
       }

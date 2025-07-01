@@ -42,7 +42,7 @@
     },
     "height": {
       "type": "integer",
-      "default": 99
+      "default": 96
     },
     "helpLink": {
       "type": "string",
