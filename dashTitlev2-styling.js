@@ -47,7 +47,7 @@
       <input type="text" id="feedback-link" placeholder="Example: https://jira-sd.csiro.au/servicedesk"><br><br>
     </div>
     <div class="customStyleItem">
-      <label for="collectorID">Jira Issue Collector ID</label>
+      <label for="collectorID">Jira SD Issue Collector ID</label>
       <input type="text" id="collector-ID" placeholder="The collector ID granted by Jira SD"><br><br>
     </div>
   `;
@@ -87,7 +87,7 @@
     }
 
     set title(newTitle) {
-      this._titleText.value = newTitle;
+      this._titleText.value = newTitle || "";
     }
 
     set subtitle(newSubtitle) {
