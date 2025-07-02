@@ -43,7 +43,7 @@
       :host .dashSubTitle {
         font-size: 0.9375rem;
         color: #707070;
-        font-family: var(--sapFontFamily);
+        font-family: "72", "Comic Sans MS";
         font-weight: 400;
         line-height: 1.5;
       }
@@ -205,13 +205,6 @@
           reject("html2canvas is not loaded");
           return;
       }
-
-    const sapFont = "72"
-    
-    this._shadowRoot.querySelectorAll('.dashSubTitle, .helpText, .feedbackText')
-      .forEach(el => {
-        el.style.fontFamily = sapFont;
-      });
 
     html2canvas(this._shadowRoot.host, {
       backgroundColor: null,
