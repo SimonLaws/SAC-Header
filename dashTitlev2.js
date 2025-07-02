@@ -207,7 +207,7 @@
       }
 
     const sapFont = getComputedStyle(document.documentElement)
-        .getPropertyValue('--SAPfontfamily')
+        .getPropertyValue('--sapFontFamily')
         .trim();
     
     this._shadowRoot.host.style.fontFamily = sapFont;
