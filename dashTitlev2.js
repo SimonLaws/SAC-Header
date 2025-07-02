@@ -8,7 +8,7 @@
   template.innerHTML = `
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-      @import url('https://simonlaws.github.io/SAC-Header/Web_Fonts/72web.css');
+      @import url('https://simonlaws.github.io/SAC-Header/Web_Fonts/72Reg.css');
 
       :host {
         display: block;
@@ -44,7 +44,7 @@
       :host .dashSubTitle {
         font-size: 0.9375rem;
         color: #707070;
-        font-family: 'SAP72';
+        font-family: '72Reg';
         font-weight: 400;
         line-height: 1.5;
       }
