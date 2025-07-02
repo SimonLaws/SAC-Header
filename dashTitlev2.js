@@ -8,13 +8,6 @@
   template.innerHTML = `
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-      @font-face {
-        font-family: '72';
-        font-style: normal;
-        font-weight: 400;
-        src: url('https://sapui5.hana.ondemand.com/1.120.2/resources/sap/ui/core/themes/sap_belize/fonts/72-Bold.woff2') format('woff2'),local('72');
-        unicode-range: U+00,U+0D,U+20-7E,U+A0-FF,U+131,U+152-153,U+161,U+178,U+17D-17E,U+192,U+237,U+2C6,U+2DC,U+3BC,U+1E9E,U+2013-2014,U+2018-201A,U+201C-201E,U+2020-2022,U+2026,U+2030,U+2039-203A,U+2044,U+20AC,U+2122;
-      }
 
       :host {
         display: block;
@@ -50,7 +43,7 @@
       :host .dashSubTitle {
         font-size: 0.9375rem;
         color: #707070;
-        font-family: "72";
+        font-family: "Open Sans";
         font-weight: 400;
         line-height: 1.5;
       }
@@ -71,7 +64,7 @@
         font-size: 0.9375rem;
         font-weight: 600;
         color: #215A72;
-        font-family: var(--sapFontFamily);
+        font-family: "Open Sans";
         line-height: 22.5px;
       }
 
@@ -113,10 +106,12 @@
       this._subtitleContainer = this._shadowRoot.getElementById("dash-subtitle");
       this._helpButton = this._shadowRoot.getElementById("help-button");
       this._feedbackButton = this._shadowRoot.getElementById("feedback-button");
+      
       this._helpLink = null; // Will be set via update from SAC at runtime
       this._showCollectorDialog = null;
       this._feedbackLink = null; // Will be set via update from SAC
       this._collectorID = null; // Will be set at run time
+      
       this._shadowRoot.getElementById("help-button").addEventListener("click", () => {
         if (this._helpLink) {
           window.open(this._helpLink, "_blank");
@@ -125,7 +120,8 @@
         }
       });
     }
-
+    
+    // Helper Functions
     _updateDashTitle(value) {
       this._titleContainer.textContent = value;
     }
@@ -190,7 +186,7 @@
       }
     }
 
-    
+    // Standard SAC custom widget functions for updating fields
     onCustomWidgetBeforeUpdate(changedProperties) {
       if ("title" in changedProperties) {
         this._updateDashTitle(changedProperties.title);
@@ -229,7 +225,7 @@
       this._toggleFeedbackButton();
     }
 
-    //The below two blocks of code are used to convert the widget to an image at export time.
+    // COnverting the widget to a PNG for export
     serializeCustomWidgetToImage = async () => {
       return new Promise((resolve, reject) => {
         if (typeof html2canvas !== "function") {
