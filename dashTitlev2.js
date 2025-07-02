@@ -208,7 +208,7 @@
 
     const sapFont = getComputedStyle(document.documentElement)
         .getPropertyValue('--sapFontFamily')
-        .trim();
+        .trim() || '"Comic Sans MS", cursive';
     
     this._shadowRoot.host.style.fontFamily = sapFont;
 
