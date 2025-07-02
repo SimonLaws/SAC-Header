@@ -8,12 +8,7 @@
   template.innerHTML = `
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-      @font-face {
-        font-family: 'SAP72';
-        src: url('https://simonlaws.github.io/SAC-Header/Web_Fonts/WOFF/W01-subset/72-Regular.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-        } 
+      @import url('https://simonlaws.github.io/SAC-Header/Web_Fonts/WOFF/W01-subset/72web.css');
 
       :host {
         display: block;
