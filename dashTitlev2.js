@@ -104,6 +104,8 @@
       this._shadowRoot.appendChild(template.content.cloneNode(true));
       this._titleContainer = this._shadowRoot.getElementById("dash-title");
       this._subtitleContainer = this._shadowRoot.getElementById("dash-subtitle");
+      this._helpButton = this._shadowRoot.getElementById("help-button");
+      this._feedbackButton = this._shadowRoot.getElementById("feedback-button");
       this._helpLink = null; // Will be set via update from SAC at runtime
       this._showCollectorDialog = null;
       this._feedbackLink = null; // Will be set via update from SAC
@@ -122,11 +124,11 @@
     }
 
     _updateDashSubtitle(value) {
-      this._subtitleContainer.textContent = value; // fallback
+      this._subtitleContainer.textContent = value;
     }
     
     _updateHelpLink(value) {
-      this._helpLink = value || "https://www.csiro.au"; // fallback link
+      this._helpLink = value;
     }
 
     _updatefeedbackLink (value) {
@@ -160,7 +162,27 @@
         script.async = true;
         document.head.appendChild(script);
       }
+    }
+
+    _toggleHelpButton() {
+      if (this._helpLink && this._helpLink.trim() !== "") {
+        this._helpButton.style.display = "flex";  // or "block", but your CSS uses flex
+      } else {
+        this._helpButton.style.display = "none";
       }
+    }
+
+    _toggleFeedbackButton() {
+      if (
+        (this._feedbackLink && this._feedbackLink.trim() !== "") ||
+        (this._collectorID && this._collectorID.trim() !== "")
+      ) {
+      this._feedbackButton.style.display = "flex";
+      } else {
+        this._feedbackButton.style.display = "none";
+      }
+    }
+
     
     onCustomWidgetBeforeUpdate(changedProperties) {
       if ("title" in changedProperties) {
@@ -196,6 +218,8 @@
       if ("collectorID" in changedProperties) {
         this._updatecollectorID(changedProperties.collectorID);
       }
+      this._toggleHelpButton();
+      this._toggleFeedbackButton();
     }
 
     //The below two blocks of code are used to convert the widget to an image at export time.
@@ -230,23 +254,17 @@
         window.open(this._feedbackLink, "_blank");
       return;
       }
-
       if (this._collectorID) {
         if (this._showCollectorDialog) {
           console.log("Opening Jira collector dialog");
           this._showCollectorDialog();
         } else {
-      console.warn("Collector ID is set but showCollectorDialog not ready yet");
-      }
-      return;
-
-      
-    } 
-
-    console.warn("No feedback link or collector ID set.");
+            console.warn("Collector ID is set but showCollectorDialog not ready yet");
+          }
+      return;      
+      } 
+      console.warn("No feedback link or collector ID set.");
       });
-
-    
     };
   };
   customElements.define("com-csiro-title", dashTitle);
