@@ -206,9 +206,7 @@
           return;
       }
 
-    const sapFont = getComputedStyle(document.documentElement)
-        .getPropertyValue('--sapFontFamily')
-        .trim();
+    const sapFont = "72"
     
     this._shadowRoot.querySelectorAll('.dashSubTitle, .helpText, .feedbackText')
       .forEach(el => {
