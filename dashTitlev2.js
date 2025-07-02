@@ -206,6 +206,12 @@
           return;
       }
 
+    const sapFont = getComputedStyle(document.documentElement)
+        .getPropertyValue('--SAPfontfamily')
+        .trim();
+    
+    this._shadowRoot.host.style.fontFamily = sapFont;
+
     html2canvas(this._shadowRoot.host, {
       backgroundColor: null,
       scale: 2
