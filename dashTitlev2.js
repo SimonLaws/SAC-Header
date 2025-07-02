@@ -8,7 +8,7 @@
   template.innerHTML = `
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
-      @font-face {
+      @import {
         font-family: '72';
         font-style: normal;
         font-weight: 400;
