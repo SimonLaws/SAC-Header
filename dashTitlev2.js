@@ -43,7 +43,7 @@
       :host .dashSubTitle {
         font-size: 0.9375rem;
         color: #707070;
-        font-family: var(--sapFontFamily),"Montserrat";
+        font-family: var(--sapFontFamily);
         font-weight: 400;
         line-height: 1.5;
       }
@@ -208,9 +208,12 @@
 
     const sapFont = getComputedStyle(document.documentElement)
         .getPropertyValue('--sapFontFamily')
-        .trim() || '"Comic Sans MS", cursive';
+        .trim();
     
-    this._shadowRoot.host.style.fontFamily = sapFont;
+    this._shadowRoot.querySelectorAll('.dashSubTitle, .helpText, .feedbackText')
+      .forEach(el => {
+        el.style.fontFamily = sapFont;
+      });
 
     html2canvas(this._shadowRoot.host, {
       backgroundColor: null,
