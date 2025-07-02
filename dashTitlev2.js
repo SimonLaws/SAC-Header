@@ -43,7 +43,7 @@
       :host .dashSubTitle {
         font-size: 0.9375rem;
         color: #707070;
-        font-family: "Montserrat";
+        font-family: "Montserrat", sans-serif;
         font-weight: 400;
         line-height: 1.5;
       }
