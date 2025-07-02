@@ -9,12 +9,12 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
       @font-face {
-        font-family: '72Reg';
-        src: url('https://simonlaws.github.io/SAC-Header/Web_Fonts/72-Regular.woff2') format('woff2');
-        font-weight: normal;
+        font-family: 'my72Font';
         font-style: normal;
+        font-weight: 400;
+        src: url('https://sapui5.hana.ondemand.com/1.120.2/resources/sap/ui/core/themes/sap_belize/fonts/72-Regular.woff2') format('woff2'), local('72');
+        unicode-range: U+00,U+0D,U+20-7E,U+A0-FF,U+131,U+152-153,U+161,U+178,U+17D-17E,U+192,U+237,U+2C6,U+2DC,U+3BC,U+1E9E,U+2013-2014,U+2018-201A,U+201C-201E,U+2020-2022,U+2026,U+2030,U+2039-203A,U+2044,U+20AC,U+2122;
       }
-
       :host {
         display: block;
       }
@@ -49,8 +49,8 @@
       :host .dashSubTitle {
         font-size: 0.9375rem;
         color: #707070;
-        font-family: '72Reg';
-        font-weight: normal;
+        font-family: 'my72Font';
+        font-weight: 400;
         line-height: 1.5;
       }
 
