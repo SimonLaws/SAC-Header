@@ -50,7 +50,7 @@
         font-size: 0.9375rem;
         color: #707070;
         font-family: '72Reg';
-        font-weight: 400;
+        font-weight: normal;
         line-height: 1.5;
       }
 
