@@ -122,7 +122,7 @@
         }
       });
       
-      this._userEmail = FPA_SESSION.userParams.EMAIL;
+      this._userEmail = FPA_SESSION.userParams.EMAIL.toLowerCase;
       console.log(this._userEmail)
     }
     
