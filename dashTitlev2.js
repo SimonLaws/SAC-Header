@@ -189,7 +189,7 @@
 
       if (!document.querySelector(`script[src="${sdCollectorUrl}"]`)) {
         const script = document.createElement("script");
-        script.src = collectorUrl;
+        script.src = sdCollectorUrl;
         script.type = "text/javascript";
         script.async = true;
         document.head.appendChild(script);
@@ -199,7 +199,7 @@
 
     _toggleHelpButton() {
       if (this._helpLink && this._helpLink.trim() !== "") {
-        this._helpButton.style.display = "flex";  // or "block", but your CSS uses flex
+        this._helpButton.style.display = "flex"; 
       } else {
         this._helpButton.style.display = "none";
       }
