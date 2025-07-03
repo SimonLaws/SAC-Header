@@ -67,7 +67,7 @@
       this._feedbackLink = this._shadowRoot.getElementById("feedback-link");
       this._helpLink = this._shadowRoot.getElementById("help-link");
       this._collectorID = this._shadowRoot.getElementById("collector-ID");
-      this._sdCollectorID = this._shadowRoot.getElementById("sd-collector-id")
+      this._sdCollectorID = this._shadowRoot.getElementById("sd-collector-ID")
 
       this._titleText.addEventListener("input", this._submit.bind(this));
       this._subtitleText.addEventListener("input", this._submit.bind(this));
