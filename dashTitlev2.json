@@ -54,7 +54,11 @@
     },
     "collectorID": {
       "type": "string",
-      "description": "The jira issue collector ID provided by Jira SD."
+      "description": "The jira issue collector ID provided by the Jira Project."
+    },
+    "sdCollectorID": {
+      "type": "string",
+      "description": "The jira issue collector ID provided by Jira Service Desk"
     }
 
   },

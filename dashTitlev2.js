@@ -107,10 +107,12 @@
       this._helpButton = this._shadowRoot.getElementById("help-button");
       this._feedbackButton = this._shadowRoot.getElementById("feedback-button");
       
-      this._helpLink = null; // Will be set via update from SAC at runtime
-      this._showCollectorDialog = null;
-      this._feedbackLink = null; // Will be set via update from SAC
+      this._helpLink = null; // Will be set at run time
+      this._feedbackLink = null; // Will be set at run time
       this._collectorID = null; // Will be set at run time
+      this._sdCollectorID = null; // Will be set at run time
+
+      this._showCollectorDialog = null;
       
       this._shadowRoot.getElementById("help-button").addEventListener("click", () => {
         if (this._helpLink) {
@@ -144,7 +146,7 @@
       // Load Jira collector script when collectorID is set
       if (!value) return;
 
-      const collectorUrl = `https://jira-sd.csiro.au/plugins/servlet/issueCollectorBootstrap.js?collectorId=${value}&locale=en_AU`;
+      const collectorUrl = `https://jira.csiro.au/plugins/servlet/issueCollectorBootstrap.js?collectorId=${value}&locale=en_AU`;
     
       // Define trigger function before script loads
       window.ATL_JQ_PAGE_PROPS = {
@@ -165,6 +167,34 @@
         script.async = true;
         document.head.appendChild(script);
       }
+    }
+
+    _updateSDCollectorID(value) {
+      this._sdCollectorID = value;
+      
+      if (!value) return
+
+      const sdCollectorUrl = `https://jira-sd.csiro.au/plugins/servlet/issueCollectorBootstrap.js?collectorId=${value}&locale=en_AU`;
+      
+      window.ATL_JQ_PAGE_PROPS = {
+        fieldValues: {
+          summary: "Default issue summary",
+          description: "Describe the issue here.\n\nSteps to reproduce:\n1. ...\n2. ...",
+          customfield_10000: "Example value"
+        },
+        triggerFunction: (showCollectorDialog) => {
+          this._showCollectorDialog = showCollectorDialog;
+        }
+      };
+
+      if (!document.querySelector(`script[src="${sdCollectorUrl}"]`)) {
+        const script = document.createElement("script");
+        script.src = collectorUrl;
+        script.type = "text/javascript";
+        script.async = true;
+        document.head.appendChild(script);
+      }
+
     }
 
     _toggleHelpButton() {
@@ -203,6 +233,9 @@
       if ("collectorID" in changedProperties) {
         this._updatecollectorID(changedProperties.collectorID);
       }
+      if ("sdCollectorID" in changedProperties) {
+        this._updateSDCollectorID(changedProperties.sdCollectorID)
+      }
     }
 
     onCustomWidgetAfterUpdate(changedProperties) {
@@ -220,6 +253,9 @@
       }
       if ("collectorID" in changedProperties) {
         this._updatecollectorID(changedProperties.collectorID);
+      }
+      if ("sdCollectorID" in changedProperties) {
+        this._updateSDCollectorID(changedProperties.sdCollectorID)
       }
       this._toggleHelpButton();
       this._toggleFeedbackButton();
@@ -265,7 +301,17 @@
             console.warn("Collector ID is set but showCollectorDialog not ready yet");
           }
       return;      
-      } 
+      }
+      if (this._sdCollectorID) {
+        if (this._showCollectorDialog) {
+          console.log("Opening Jira collector dialog");
+          this._showCollectorDialog();
+        } else {
+            console.warn("Collector ID is set but showCollectorDialog not ready yet");
+          }
+      return;      
+      }
+
       console.warn("No feedback link or collector ID set.");
       });
     };

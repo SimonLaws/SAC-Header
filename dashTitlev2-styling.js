@@ -47,8 +47,12 @@
       <input type="text" id="feedback-link" placeholder="Example: https://jira-sd.csiro.au/servicedesk"><br><br>
     </div>
     <div class="customStyleItem">
+      <label for="collectorID">Jira Project Issue Collector ID</label>
+      <input type="text" id="collector-ID" placeholder="The collector ID granted by the Jira Project"><br><br>
+    </div>
+    <div class="customStyleItem">
       <label for="collectorID">Jira SD Issue Collector ID</label>
-      <input type="text" id="collector-ID" placeholder="The collector ID granted by Jira SD"><br><br>
+      <input type="text" id="sd-collector-ID" placeholder="The collector ID granted by Jira Service Desk"><br><br>
     </div>
   `;
 
@@ -62,13 +66,15 @@
       this._subtitleText = this._shadowRoot.getElementById("dash-subtitle");
       this._feedbackLink = this._shadowRoot.getElementById("feedback-link");
       this._helpLink = this._shadowRoot.getElementById("help-link");
-      this._collectorID = this._shadowRoot.getElementById("collector-ID")
+      this._collectorID = this._shadowRoot.getElementById("collector-ID");
+      this._sdCollectorID = this._shadowRoot.getElementById("sd-collector-id")
 
       this._titleText.addEventListener("input", this._submit.bind(this));
       this._subtitleText.addEventListener("input", this._submit.bind(this));
       this._feedbackLink.addEventListener("input", this._submit.bind(this));
       this._helpLink.addEventListener("input", this._submit.bind(this));
       this._collectorID.addEventListener("input", this._submit.bind(this));
+      this._sdCollectorID.addEventListener("input", this._submit.bind(this))
     }
 
     _submit(e) {
@@ -78,7 +84,8 @@
         subtitle: this._subtitleText.value,
         feedbackLink: this._feedbackLink.value,
         helpLink: this._helpLink.value,
-        collectorID: this._collectorID.value
+        collectorID: this._collectorID.value,
+        sdCollectorID: this._sdCollectorID.value
       };
 
       this.dispatchEvent(new CustomEvent("propertiesChanged", {
@@ -105,7 +112,12 @@
     set collectorID(newCollectorID) {
       this._collectorID.value = newCollectorID || "";
     }
+
+    set sdCollectorID(newSDCollectorID) {
+      this._sdCollectorID.value = newSDCollectorID || "";
+    }
   }
+
 
   customElements.define("com-csiro-title-styling", dashTitleStylingPanel);
 })();
