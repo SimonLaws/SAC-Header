@@ -51,7 +51,7 @@
       <input type="text" id="collector-ID" placeholder="The collector ID granted by the Jira Project"><br><br>
     </div>
     <div class="customStyleItem">
-      <label for="collectorID">Jira SD Issue Collector ID</label>
+      <label for="sdCollectorID">Jira SD Issue Collector ID</label>
       <input type="text" id="sd-collector-ID" placeholder="The collector ID granted by Jira Service Desk"><br><br>
     </div>
   `;
