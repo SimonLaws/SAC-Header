@@ -209,6 +209,7 @@
       if (
         (this._feedbackLink && this._feedbackLink.trim() !== "") ||
         (this._collectorID && this._collectorID.trim() !== "")
+        (this._sdCollectorID && this._sdCollectorID.trim() !== "")
       ) {
       this._feedbackButton.style.display = "flex";
       } else {
