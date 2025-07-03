@@ -156,7 +156,7 @@
         fieldValues: {
           summary: "Default issue summary",
           description: "Describe the issue here.\n\nSteps to reproduce:\n1. ...\n2. ...",
-          email: this._userEmail.textContent,
+          email: this._userEmail,
           customfield_10000: "Example value"
         },
         triggerFunction: (showCollectorDialog) => {
