@@ -123,6 +123,7 @@
       });
       
       this._userEmail = FPA_SESSION.userParams.EMAIL;
+      console.log(this._userEmail.textContent)
     }
     
     // Helper Functions
