@@ -183,7 +183,7 @@
       window.ATL_JQ_PAGE_PROPS = {
         fieldValues: {
           // Default values to prefill in the Jira form
-          summary: "Default issue summary",
+          summary: "Issue summary",
           description: "Describe the issue here.\n\nSteps to reproduce:\n1. ...\n2. ...",
           name: this._userName,
           email: this._userEmail,          // The user's email from SAC session
@@ -226,7 +226,7 @@
       // It configures the form fields and the trigger function the collector will call.
       window.ATL_JQ_PAGE_PROPS = {
         fieldValues: {
-          summary: "Default issue summary",
+          summary: "Issue summary",
           description: "Describe the issue here.\n\nSteps to reproduce:\n1. ...\n2. ...",
           email: this._userEmail,
           name: this._userName,
