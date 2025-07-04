@@ -184,6 +184,7 @@
           summary: "Default issue summary",
           description: "Describe the issue here.\n\nSteps to reproduce:\n1. ...\n2. ...",
           email: this._userEmail,
+          customfield_10010: "<![CDATA[ General Enquiry ]]>"
         },
         triggerFunction: (showCollectorDialog) => {
           this._showCollectorDialog = showCollectorDialog;
