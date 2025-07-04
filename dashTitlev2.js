@@ -142,6 +142,7 @@
 
       // Collect the name of the user from the session
       this._userName = FPA_SESSION.userParams.DISPLAY_NAME;
+      console.log(this._userName)
     }
     
     // Helper Functions
