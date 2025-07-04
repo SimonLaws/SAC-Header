@@ -124,7 +124,7 @@
       
       this._userEmail = FPA_SESSION.userParams.EMAIL.toLowerCase();
       console.log(this._userEmail);
-      this._systemInfo =  `Page Title:${sap.fpa.ui.infra.service.firefly.FireflyServiceManagerBase._storyModel.oData.analytic.title}\n` +
+      this._systemInfo =  `Page Title: ${sap.fpa.ui.infra.service.firefly.FireflyServiceManagerBase._storyModel.oData.analytic.title}\n` +
                           `Story URL: ${location.href}\n` +
                           `User Agent: ${navigator.userAgent}\n` +
                           `Viewport: ${window.innerWidth} × ${window.innerHeight}`;
