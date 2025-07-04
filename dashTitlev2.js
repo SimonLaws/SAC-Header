@@ -246,8 +246,10 @@
       if ("sdCollectorID" in changedProperties) {
         this._updateSDCollectorID(changedProperties.sdCollectorID)
       }
+      this._toggleHelpButton();
+      this._toggleFeedbackButton();
     }
-
+/*
     onCustomWidgetAfterUpdate(changedProperties) {
       if ("title" in changedProperties) {
         this._updateDashTitle(changedProperties.title);
@@ -270,7 +272,7 @@
       this._toggleHelpButton();
       this._toggleFeedbackButton();
     }
-
+*/
     // COnverting the widget to a PNG for export
     serializeCustomWidgetToImage = async () => {
       return new Promise((resolve, reject) => {
