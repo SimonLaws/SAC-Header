@@ -186,7 +186,6 @@
           // Default values to prefill in the Jira form
           summary: "Issue summary",
           description: "Describe the issue here.\n\nSteps to reproduce:\n1. ...\n2. ...",
-          reporter: this._userName,
           email: this._userEmail,          // The user's email from SAC session
           environment: this._systemInfo    // System details to help with troubleshooting
         },
@@ -230,7 +229,6 @@
           summary: "Issue summary",
           description: "Describe the issue here.\n\nSteps to reproduce:\n1. ...\n2. ...",
           email: this._userEmail,
-          reporter: this._userName,
           environment: this._systemInfo     
         },
         // The collector script will call this function when it's ready
