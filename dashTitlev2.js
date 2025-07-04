@@ -1,9 +1,12 @@
 (function () {
+  // Dynamically load the html2canvas library so the widget can export itself as a PNG
   const script = document.createElement('script');
   script.src = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
+  // Log a check to ensure html2canvas has loaded
   script.onload = () => console.log("html2canvas loaded successfully");
   document.head.appendChild(script);
 
+  // Define the template for the custom element
   let template = document.createElement("template");
   template.innerHTML = `
     <style>
@@ -96,24 +99,29 @@
       </div>
     </div>
   `;
-
+  
+  // Define the custom SAC widget class
   class dashTitle extends HTMLElement {
     constructor() {
       super();
+      // Create shadow DOM and attach the template content
       this._shadowRoot = this.attachShadow({ mode: "open" });
       this._shadowRoot.appendChild(template.content.cloneNode(true));
+
+      // Cache references to important elements in the shadow DOM
       this._titleContainer = this._shadowRoot.getElementById("dash-title");
       this._subtitleContainer = this._shadowRoot.getElementById("dash-subtitle");
       this._helpButton = this._shadowRoot.getElementById("help-button");
       this._feedbackButton = this._shadowRoot.getElementById("feedback-button");
       
+      // Initialise configuration properties
       this._helpLink = null; // Will be set at run time
       this._feedbackLink = null; // Will be set at run time
       this._collectorID = null; // Will be set at run time
       this._sdCollectorID = null; // Will be set at run time
-
       this._showCollectorDialog = null;
       
+      // Add click listener for the help button to open the help link
       this._shadowRoot.getElementById("help-button").addEventListener("click", () => {
         if (this._helpLink) {
           window.open(this._helpLink, "_blank");
@@ -121,9 +129,11 @@
           console.warn("Help link not defined.");
         }
       });
-      
+      // Retrieve and log user email from the SAC session
       this._userEmail = FPA_SESSION.userParams.EMAIL.toLowerCase();
       console.log(this._userEmail);
+
+      // Collect system information for issue reporting
       this._systemInfo =  `Page Title: ${sap.fpa.ui.infra.service.firefly.FireflyServiceManagerBase._storyModel.oData.analytic.title}\n` +
                           `Story URL: ${location.href}\n` +
                           `User Agent: ${navigator.userAgent}\n` +
@@ -132,22 +142,28 @@
     }
     
     // Helper Functions
+
+    // Helper to update title text
     _updateDashTitle(value) {
       this._titleContainer.textContent = value;
     }
 
+    // Helper to update subtitle text
     _updateDashSubtitle(value) {
       this._subtitleContainer.textContent = value;
     }
     
+    // Helper to update Help Link url
     _updateHelpLink(value) {
       this._helpLink = value;
     }
 
+    // Helper to update feedback link url
     _updatefeedbackLink (value) {
       this._feedbackLink = value;
     }
-
+    
+    // Set Jira collector ID and load the collector script
     _updatecollectorID(value) {
       this._collectorID = value;
 
@@ -178,6 +194,7 @@
       }
     }
 
+    // Set Jira SD collector ID and load the collector script
     _updateSDCollectorID(value) {
       this._sdCollectorID = value;
       
@@ -206,6 +223,7 @@
       }
     }
 
+    // Show or hide the help button depending on configuration at design time
     _toggleHelpButton() {
       if (this._helpLink && this._helpLink.trim() !== "") {
         this._helpButton.style.display = "flex"; 
@@ -214,6 +232,7 @@
       }
     }
 
+    // Show or hide the feedback button depending on configuration at design time
     _toggleFeedbackButton() {
       if (
         (this._feedbackLink && this._feedbackLink.trim() !== "") ||
@@ -226,7 +245,7 @@
       }
     }
 
-    // Standard SAC custom widget functions for updating fields
+    // Standard SAC custom widget lifecycle method: handles property updates
     onCustomWidgetBeforeUpdate(changedProperties) {
       if ("title" in changedProperties) {
         this._updateDashTitle(changedProperties.title);
@@ -273,7 +292,8 @@
       this._toggleFeedbackButton();
     }
 */
-    // COnverting the widget to a PNG for export
+    
+    // Utility: export the widget as a PNG image for use in SAC exports
     serializeCustomWidgetToImage = async () => {
       return new Promise((resolve, reject) => {
         if (typeof html2canvas !== "function") {
@@ -293,7 +313,7 @@
       });
     };
     
-    // The below code is used to create the Jira Issue collector box that pops up when the feedback button is clicked
+    // Lifecycle method: attach click listener for the feedback button
     connectedCallback() {
       const button = this.shadowRoot.getElementById("feedback-button");
 
@@ -328,5 +348,6 @@
       });
     };
   };
+  // Register the custom element
   customElements.define("com-csiro-title", dashTitle);
 })();
