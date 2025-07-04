@@ -163,62 +163,86 @@
       this._feedbackLink = value;
     }
     
-    // Set Jira collector ID and load the collector script
+    // Set Jira collector ID and load the collector script dynamically
     _updatecollectorID(value) {
+      // Store the provided collector ID in this instance
       this._collectorID = value;
 
-      // Load Jira collector script when collectorID is set
+      // If no value is provided, stop processing
       if (!value) return;
 
+      // Construct the full URL for the Jira Issue Collector script
       const collectorUrl = `https://jira.csiro.au/plugins/servlet/issueCollectorBootstrap.js?collectorId=${value}&locale=en_AU`;
-    
-      // Define trigger function before script loads
+
+      // Define the ATL_JQ_PAGE_PROPS global object
+      // This object must exist before the collector script loads.
+      // It configures the form fields and the trigger function the collector will call.
       window.ATL_JQ_PAGE_PROPS = {
         fieldValues: {
+          // Default values to prefill in the Jira form
           summary: "Default issue summary",
           description: "Describe the issue here.\n\nSteps to reproduce:\n1. ...\n2. ...",
-          email: this._userEmail,
-          environment: this._systemInfo
+          email: this._userEmail,          // The user's email from SAC session
+          environment: this._systemInfo    // System details to help with troubleshooting
         },
+        // The collector script will call this function when it's ready
+        // We save the provided showCollectorDialog function so we can invoke it later
         triggerFunction: (showCollectorDialog) => {
           this._showCollectorDialog = showCollectorDialog;
         }
       };
 
+      // Check if the Jira collector script has already been added to the page
+      // Avoids duplicating the script and reloading it unnecessarily
       if (!document.querySelector(`script[src="${collectorUrl}"]`)) {
+        // Dynamically create the script element
         const script = document.createElement("script");
         script.src = collectorUrl;
         script.type = "text/javascript";
         script.async = true;
+
+        // Add the script to the page header so it starts loading
         document.head.appendChild(script);
       }
     }
 
-    // Set Jira SD collector ID and load the collector script
+    // Set Jira collector ID and load the collector script dynamically
     _updateSDCollectorID(value) {
+      // Store the provided collector ID in this instance
       this._sdCollectorID = value;
       
+      // If no value is provided, stop processing
       if (!value) return
 
+      // Construct the full URL for the Jira Issue Collector script
       const sdCollectorUrl = `https://jira-sd.csiro.au/plugins/servlet/issueCollectorBootstrap.js?collectorId=${value}&locale=en_AU`;
       
+      // Define the ATL_JQ_PAGE_PROPS global object
+      // This object must exist before the collector script loads.
+      // It configures the form fields and the trigger function the collector will call.
       window.ATL_JQ_PAGE_PROPS = {
         fieldValues: {
           summary: "Default issue summary",
           description: "Describe the issue here.\n\nSteps to reproduce:\n1. ...\n2. ...",
           email: this._userEmail,
-          customfield_10010: "da/713ef8e0-224c-44f4-b24b-c016ca65f42c"
+          environment: this._systemInfo     
         },
+        // The collector script will call this function when it's ready
+        // We save the provided showCollectorDialog function so we can invoke it later
         triggerFunction: (showCollectorDialog) => {
           this._showCollectorDialog = showCollectorDialog;
         }
       };
 
+      // Check if the Jira collector script has already been added to the page
+      // Avoids duplicating the script and reloading it unnecessarily
       if (!document.querySelector(`script[src="${sdCollectorUrl}"]`)) {
+        // Dynamically create the script element
         const script = document.createElement("script");
         script.src = sdCollectorUrl;
         script.type = "text/javascript";
         script.async = true;
+        // Add the script to the page header so it starts loading
         document.head.appendChild(script);
       }
     }
@@ -293,57 +317,82 @@
     }
 */
     
-    // Utility: export the widget as a PNG image for use in SAC exports
+    // Utility: Export the entire widget (shadow DOM and all) as a PNG image
+    // This is called by SAC when the user exports the story or wants an image snapshot
     serializeCustomWidgetToImage = async () => {
       return new Promise((resolve, reject) => {
+        // Check that the html2canvas library has been loaded
+        // If it's missing, reject the promise so SAC knows it failed
         if (typeof html2canvas !== "function") {
           reject("html2canvas is not loaded");
           return;
       }
 
+    // Use html2canvas to render the custom element's shadow host to a canvas
+    // this._shadowRoot.host refers to the top-level custom element itself
     html2canvas(this._shadowRoot.host, {
-      backgroundColor: null,
-      scale: 2
+      backgroundColor: null,  // Set to null for transparent background in PNG
+      scale: 2                // Increase scale for higher-resolution export
     }).then(canvas => {
+      // html2canvas has successfully rendered the widget to a <canvas> element
+      // Convert the canvas to a Base64-encoded PNG image string
       const imageStr = canvas.toDataURL("image/png"); // <-- Base64 PNG
-      resolve(imageStr); // <-- returned to SAC
+      // Resolve the promise, returning the image string to SAC
+      resolve(imageStr);
       }).catch(error => {
-      reject("Image capture failed: " + error);
+        // If html2canvas fails (e.g., rendering error or security restriction)
+        // Reject the promise with an error message
+        reject("Image capture failed: " + error);
         });
       });
     };
     
-    // Lifecycle method: attach click listener for the feedback button
+    // Lifecycle method called automatically when the custom element is added to the DOM
+    // Used here to attach a click event listener to the feedback button  
     connectedCallback() {
+      // Get a reference to the feedback button inside the shadow DOM
       const button = this.shadowRoot.getElementById("feedback-button");
-
+      // Add a click event listener to the feedback button
       button.addEventListener("click", (e) => {
+        // Prevent default click behavior (just in case it's a <button> or <a>)
         e.preventDefault();
-
+      
+      // === First priority: if a direct feedback link is set ===
+      // If the user has configured a feedback URL (like an external form or page),
+      // open it in a new browser tab immediately
       if (this._feedbackLink) {
         console.log("Opening feedback link:", this._feedbackLink);
         window.open(this._feedbackLink, "_blank");
-      return;
-      }
-      if (this._collectorID) {
-        if (this._showCollectorDialog) {
-          console.log("Opening Jira collector dialog");
-          this._showCollectorDialog();
-        } else {
-            console.warn("Collector ID is set but showCollectorDialog not ready yet");
-          }
-      return;      
-      }
-      if (this._sdCollectorID) {
-        if (this._showCollectorDialog) {
-          console.log("Opening Jira collector dialog");
-          this._showCollectorDialog();
-        } else {
-            console.warn("Collector ID is set but showCollectorDialog not ready yet");
-          }
-      return;      
+      return; // Stop here; don't check other options
       }
 
+      // === Second priority: Jira Project Issue collector ===
+      // If a Jira collector ID is set, try to show the issue collector dialog
+      if (this._collectorID) {
+        if (this._showCollectorDialog) {
+          // The collector script is loaded and the dialog is ready
+          console.log("Opening Jira collector dialog");
+          this._showCollectorDialog();
+        } else {
+            // The collector ID is set, but the script might not have finished loading yet
+            console.warn("Collector ID is set but showCollectorDialog not ready yet");
+          }
+      return; // Stop here; don't check further  
+      }
+      // === Third priority: Jira Service Desk collector ===
+      // Similar to the above but for a different collector 
+      if (this._sdCollectorID) {
+        if (this._showCollectorDialog) {
+          // The SD collector script is loaded and ready
+          console.log("Opening Jira collector dialog");
+          this._showCollectorDialog();
+        } else {
+            // The SD collector ID is set, but the dialog function isn't ready yet
+            console.warn("Collector ID is set but showCollectorDialog not ready yet");
+          }
+      return;      
+      }
+      // If no link or collector ID is configured at all,
       console.warn("No feedback link or collector ID set.");
       });
     };
