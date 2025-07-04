@@ -123,7 +123,9 @@
       });
       
       this._userEmail = FPA_SESSION.userParams.EMAIL.toLowerCase();
-      console.log(this._userEmail)
+      console.log(this._userEmail);
+      this._systemInfo = `User Agent: ${navigator.userAgent}; Viewport: ${window.innerWidth} × ${window.innerHeight}`;
+      console.log(this._systemInfo);
     }
     
     // Helper Functions
@@ -157,6 +159,7 @@
           summary: "Default issue summary",
           description: "Describe the issue here.\n\nSteps to reproduce:\n1. ...\n2. ...",
           email: this._userEmail,
+          environment: this._systemInfo
         },
         triggerFunction: (showCollectorDialog) => {
           this._showCollectorDialog = showCollectorDialog;
