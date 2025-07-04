@@ -130,7 +130,7 @@
         }
       });
       // Retrieve and log user email from the SAC session
-      this._userEmail = FPA_SESSION.userParams.EMAIL.toLowerCase();
+      this._userEmail = FPA_SESSION.userParams.EMAIL;
       console.log(this._userEmail);
 
       // Collect system information for issue reporting
@@ -139,6 +139,9 @@
                           `User Agent: ${navigator.userAgent}\n` +
                           `Viewport: ${window.innerWidth} × ${window.innerHeight}`;
       console.log(this._systemInfo);
+
+      // Collect the name of the user from the session
+      this._userName = FPA_SESSION.userParams.DISPLAY_NAME;
     }
     
     // Helper Functions
@@ -182,6 +185,7 @@
           // Default values to prefill in the Jira form
           summary: "Default issue summary",
           description: "Describe the issue here.\n\nSteps to reproduce:\n1. ...\n2. ...",
+          name: this._userName,
           email: this._userEmail,          // The user's email from SAC session
           environment: this._systemInfo    // System details to help with troubleshooting
         },
@@ -225,6 +229,7 @@
           summary: "Default issue summary",
           description: "Describe the issue here.\n\nSteps to reproduce:\n1. ...\n2. ...",
           email: this._userEmail,
+          name: this._userName,
           environment: this._systemInfo     
         },
         // The collector script will call this function when it's ready
